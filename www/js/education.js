@@ -19,12 +19,13 @@ function fadeInSections()
 
 function fadeInWithOffset(section, offset)
 {
-     // Does some wacky JavaScript stuff to
+     // Does some wacky JavaScript stuff to delay the fade in effect
      sleep(1000*offset)
           .then(() => section.removeAttribute("hidden"))
           .then(() => section.classList.add('fade-in-1'));
 }
 
-function sleep(ms) {
+function sleep(ms)
+{
      return new Promise(resolve => setTimeout(resolve, ms));
 }

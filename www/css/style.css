@@ -2,3 +2,23 @@
 {
     background-size: cover;
 }
+
+.align-text-center
+{
+    text-align: center;
+}
+
+.align-text-left
+{
+    text-align: right;
+}
+
+.align-text-right
+{
+    text-align: right;
+}
+
+.align-text-vertical-center
+{
+    padding: 10% 0;
+}

@@ -22,3 +22,43 @@
 {
     padding: 10% 0;
 }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fade-in-aside-1
+{
+    animation: fadeIn 2s;
+}
+
+.fade-in-aside-2
+{
+    animation: fadeIn 2.5s;
+}
+
+.fade-in-aside-3
+{
+    animation: fadeIn 3s;
+}
+
+.fade-in-aside-3
+{
+    animation: fadeIn 3.75s;
+}
+
+.fade-in-short
+{
+    animation: fadeIn 1s;
+}
+
+.fade-in-med
+{
+    animation: fadeIn 2.5s;
+}
+
+.fade-in-long
+{
+    animation: fadeIn 10s;
+}

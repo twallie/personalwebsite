@@ -23,14 +23,34 @@
     padding: 10% 0;
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+@keyframes fadeIn
+{
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut
+{
+    0% { opacity: 1; }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out
+{
+    animation: fadeOut 1s linear forwards;
 }
 
 .fade-in-1
 {
-    animation: fadeIn 2s;
+    animation: fadeIn 1s;
 }
 
 .fade-in-2

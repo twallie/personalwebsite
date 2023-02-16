@@ -45,12 +45,12 @@
 
 .fade-out
 {
-    animation: fadeOut 1s linear forwards;
+    animation: fadeOut 0.5s linear forwards;
 }
 
 .fade-in-1
 {
-    animation: fadeIn 1s;
+    animation: fadeIn 0.5s;
 }
 
 .fade-in-2

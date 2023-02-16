@@ -1,14 +1,11 @@
 // Thomas Wallsmith
 // 2023
 
-const FADE_DELAY_MS = 500;
+const FADE_DELAY_MS = 300;
+const FADE_FOLLOWUP_MULTIPLIER = 2;
 
 // Instruction to load the menu content on page load
-window.onload =
-    function()
-    {
-         fadeInContent('content-menu');
-    }
+window.onload = () => fadeInContent('content-menu');
 
 function changeSubheading(message)
 {
@@ -17,7 +14,7 @@ function changeSubheading(message)
 function swapContent(from, to)
 {
      fadeOutContent(from);
-     changeSubheading(determineSubheading(to));
+     swapSubHeadingWithFade(determineSubheading(to));
 
      // Show new content after delay
      sleep(FADE_DELAY_MS*2)
@@ -37,15 +34,23 @@ function fadeOutContent(id)
      let sections = extractContentChildren(id);
      sections.forEach((section) => fadeOut(section));
 
-     hideChildElementsAfterDelay(FADE_DELAY_MS*2);
+     hideChildElementsAfterDelay(id, FADE_DELAY_MS*FADE_FOLLOWUP_MULTIPLIER);
 }
-function hideChildElementsAfterDelay(delay)
+function swapSubHeadingWithFade(message)
 {
-     sleep(delay).then(() => hideChildElements());
+     let subheading = document.getElementById('subheading');
+     fadeOut(subheading);
+     sleep(FADE_DELAY_MS*FADE_FOLLOWUP_MULTIPLIER)
+         .then(() => changeSubheading(message))
+         .then(() => fadeIn(subheading));
 }
-function hideChildElements()
+function hideChildElementsAfterDelay(id, delay)
 {
-     extractContentChildren("content-menu").forEach(element => element.setAttribute("hidden", true))
+     sleep(delay).then(() => hideChildElements(id));
+}
+function hideChildElements(id)
+{
+     extractContentChildren(id).forEach(element => element.setAttribute("hidden", true))
 }
 function fadeOut(section)
 {
@@ -65,19 +70,24 @@ function fadeInWithOffset(section, offset)
 {
      // Does some wacky JavaScript stuff to delay the fade in effect
      sleep(FADE_DELAY_MS * offset)
-          .then(() => section.removeAttribute("hidden"))
-          .then(() => section.classList.add('fade-in-1'));
+         .then(() => fadeIn(section))
+
+}
+function fadeIn(section)
+{
+     section.removeAttribute("hidden");
+     section.classList.add('fade-in-1');
 }
 function extractContentChildren(id)
 {
      // Populating sections to do the fade in on
-     let fadeInContent = document.getElementById(id).children;
-     let sections = [];
-     for (let i = 0; i < fadeInContent.length; i++)
+     let parent = document.getElementById(id).children;
+     let children = [];
+     for (let i = 0; i < parent.length; i++)
      {
-          sections.push(fadeInContent.item(i));
+          children.push(parent.item(i));
      }
-     return sections;
+     return children;
 }
 function sleep(ms)
 {

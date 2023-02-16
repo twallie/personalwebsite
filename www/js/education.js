@@ -1,24 +1,59 @@
 // Thomas Wallsmith
-// Fades in the children of a html class with the id "fadeInContent"
-const FADE_TIMER_OFFSET_MS = 750;
+// 2023
 
-window.onload = fadeInContent;
+const FADE_DELAY_MS = 500;
 
-// Content Swapping //
-function swapContentToCollegiate() // TODO
+window.onload =
+    function()
+    {
+         fadeInContent('content-menu');
+    }
+
+function swapContentToMenu(from)
 {
-     // Fade out previous content
-     fadeOutContent();
+     fadeOutContent(from);
+
 }
-// Animation //
-function fadeOutContent()
+function fadeInMenu()
 {
-     // Manual fading of subheading to be replaced with title of new content
-     document.getElementById('subheading').classList.add("fade-out");
+     fadeInContent("content-menu");
+}
+function changeSubheading(message)
+{
+     document.getElementById('subheading').innerText = message;
+}
+function swapContent(from, to)
+{
+     fadeOutContent(from);
+     changeSubheading(determineSubheading(to));
 
+     // Show new content after delay
+     sleep(FADE_DELAY_MS*2)
+         .then(function() {
+              fadeInContent(to);
+         });
+}
+function determineSubheading(id)
+{
+     if (id === 'content-menu') return "a brief history of my academic career";
+     else if (id === 'content-collegiate') return "my collegiate academic history";
+     else return "UNDEFINED SUBHEADING";
+}
+function fadeOutContent(id)
+{
      // Fading each content section
-     let sections = extractContentChildren();
+     let sections = extractContentChildren(id);
      sections.forEach((section) => fadeOut(section));
+
+     hideChildElementsAfterDelay(FADE_DELAY_MS*2);
+}
+function hideChildElementsAfterDelay(delay)
+{
+     sleep(delay).then(() => hideChildElements());
+}
+function hideChildElements()
+{
+     extractContentChildren("content-menu").forEach(element => element.setAttribute("hidden", true))
 }
 function fadeOut(section)
 {
@@ -26,33 +61,25 @@ function fadeOut(section)
      section.classList.remove("fade-in-1");
      section.classList.add("fade-out");
 }
-function fadeInContent()
+function fadeInContent(id)
 {
-     // Get array of sections to fade in
-     let sections = extractContentChildren();
+     let sections = extractContentChildren(id);
 
      // Iterating over the sections to fade them in
      let offset = 0;
      sections.forEach((section) => fadeInWithOffset(section, offset++));
-
-     // Removing the fade-in-1 class from the sections
-     sections.forEach((section) => section.classList.remove('fade-in-1'));
-
-     // Report to the console we are done
-     console.log("fadeInContent() is done!");
 }
 function fadeInWithOffset(section, offset)
 {
      // Does some wacky JavaScript stuff to delay the fade in effect
-     sleep(FADE_TIMER_OFFSET_MS * offset)
+     sleep(FADE_DELAY_MS * offset)
           .then(() => section.removeAttribute("hidden"))
           .then(() => section.classList.add('fade-in-1'));
 }
-// HTML/JS Utility //
-function extractContentChildren()
+function extractContentChildren(id)
 {
      // Populating sections to do the fade in on
-     let fadeInContent = document.getElementById("content").children;
+     let fadeInContent = document.getElementById(id).children;
      let sections = [];
      for (let i = 0; i < fadeInContent.length; i++)
      {

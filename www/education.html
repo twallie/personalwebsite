@@ -27,7 +27,7 @@
         <h1>My Academics</h1>
         <small id="subheading">a brief history of my academic career</small>
     </hgroup>
-    <section id="content">
+    <section id="content-menu">
         <section hidden>
             <h3>I love learning.</h3>
             <p>
@@ -55,8 +55,49 @@
             <h1>Get specifics</h1>
         </section>
         <section hidden class="align-text-center">
-                <a onclick="fadeOutContent()">View Collegiate Academic History</a><br>
-                Learn more about my time at the University of Central Florida.
+            <a onclick="swapContent('content-menu', 'content-collegiate')">View Collegiate Academic History</a><br>
+            Learn more about my time at the University of Central Florida.
+        </section>
+        <section hidden class="align-text-center">
+            <a>View Pre-Collegiate Academic History</a><br>
+            Learn what I was doing during high school.
+        </section>
+        <section hidden class="align-text-center">
+            <a>View Technical Skills</a><br>
+            Read a write-up of all the technical skills I've gained.
+        </section>
+    </section>
+    <section id="content-collegiate">
+        <section hidden>
+            <h3>First thing</h3>
+            <p>
+                Talking about thing...
+                <br>Talking more about thing...
+                <br>Yes.. Yes.. Of course...
+            </p>
+        </section>
+        <section hidden>
+            <h3>Second thing</h3>
+            <p>
+                Talking about thing...
+                <br>Talking more about thing...
+                <br>Yes.. Yes.. Of course...
+            </p>
+        </section>
+        <section hidden>
+            <h3>Last thing.</h3>
+            <p>
+                Talking about thing...
+                <br>Talking more about thing...
+                <br>Yes.. Yes.. Of course...
+            </p>
+        </section>
+        <section hidden class="align-text-center">
+            <h1>Get specifics</h1>
+        </section>
+        <section hidden class="align-text-center">
+            <a onclick="swapContent('content-collegiate', 'content-menu')">Return to overview</a><br>
+            Return to the overview menu.
         </section>
         <section hidden class="align-text-center">
             <a>View Pre-Collegiate Academic History</a><br>

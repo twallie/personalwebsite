@@ -3,21 +3,13 @@
 
 const FADE_DELAY_MS = 500;
 
+// Instruction to load the menu content on page load
 window.onload =
     function()
     {
          fadeInContent('content-menu');
     }
 
-function swapContentToMenu(from)
-{
-     fadeOutContent(from);
-
-}
-function fadeInMenu()
-{
-     fadeInContent("content-menu");
-}
 function changeSubheading(message)
 {
      document.getElementById('subheading').innerText = message;

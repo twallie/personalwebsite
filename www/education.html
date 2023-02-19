@@ -7,10 +7,8 @@
     <title>Education</title>
 </head>
 <body>
-
 <!--Javascript-->
 <script src="js/education.js"></script>
-
 <!--Header-->
 <header class="container">
     <div class="container align-text-center">
@@ -20,7 +18,6 @@
         </hgroup>
     </div>
 </header>
-
 <!--Content-->
 <div class="container">
     <hgroup id="heading" class="align-text-center">
@@ -28,6 +25,7 @@
         <small id="subheading">a brief history of my academic career</small>
     </hgroup>
     <section id="content-menu">
+        <!--Content-->
         <section hidden>
             <h3>I love learning.</h3>
             <p>
@@ -36,7 +34,7 @@
                 Across my entire life, I've continued to learn more and more things.
             </p>
         </section>
-        <section hidden class="align-text-right">
+        <section hidden>
             <h3>I'm proud of what I've learned.</h3>
             <p>
                 My love of learning has caused me to learn a lot of things, and I'm proud of the things I know. I'm a fluent programmer with several languages, primarily Java, Python, and C.
@@ -51,6 +49,7 @@
                 If you'd like to reach out, check out my <a>contact</a> page.
             </p>
         </section>
+        <!--Content controls-->
         <section hidden class="align-text-center">
             <h1>Get specifics</h1>
         </section>
@@ -59,11 +58,11 @@
             Learn more about my time at the University of Central Florida.
         </section>
         <section hidden class="align-text-center">
-            <a>View Pre-Collegiate Academic History</a><br>
+            <a onclick="swapContent('content-menu', 'content-pre-collegiate')">View Pre-Collegiate Academic History</a><br>
             Learn what I was doing during high school.
         </section>
         <section hidden class="align-text-center">
-            <a>View Technical Skills</a><br>
+            <a onclick="swapContent('content-menu', 'content-technical-skills')">View Technical Skills</a><br>
             Read a write-up of all the technical skills I've gained.
         </section>
     </section>
@@ -122,11 +121,11 @@
             Return to the overview menu.
         </section>
         <section hidden class="align-text-center">
-            <a>View Pre-Collegiate Academic History</a><br>
+            <a onclick="swapContent('content-collegiate', 'content-pre-collegiate')">View Pre-Collegiate Academic History</a><br>
             Learn what I was doing during high school.
         </section>
         <section hidden class="align-text-center">
-            <a>View Technical Skills</a><br>
+            <a onclick="swapContent('content-collegiate', 'content-technical-skills')">View Technical Skills</a><br>
             Read a write-up of all the technical skills I've gained.
         </section>
     </section>

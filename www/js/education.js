@@ -13,14 +13,16 @@ function changeSubheading(message)
 }
 function swapContent(from, to)
 {
+     // if the element we want to swap to doesn't exist, scream about it then stop
+     if (document.getElementById(to) == null)
+     {
+          console.log("Prevented a swap from " + from + " to " + to);
+          return;
+     }
+
      fadeOutContent(from);
      swapSubHeadingWithFade(determineSubheading(to));
-
-     // Show new content after delay
-     sleep(FADE_DELAY_MS*2)
-         .then(function() {
-              fadeInContent(to);
-         });
+     sleep(FADE_DELAY_MS*2).then(() => fadeInContent(to));
 }
 function determineSubheading(id)
 {

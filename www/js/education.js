@@ -26,9 +26,14 @@ function swapContent(from, to)
 }
 function determineSubheading(id)
 {
-     if (id === 'content-menu') return "a brief history of my academic career";
-     else if (id === 'content-collegiate') return "my collegiate academic history";
-     else return "UNDEFINED SUBHEADING";
+     switch(id)
+     {
+          case 'content-menu': return "a brief history of my academic career";
+          case 'content-collegiate': return "my collegiate academic history";
+          case 'content-pre-collegiate': return "my pre-collegiate academic history";
+          case 'content-technical-skills': return "a list of my technical skills";
+          default: return "UNDEFINED SUBHEADING";
+     }
 }
 function fadeOutContent(id)
 {
